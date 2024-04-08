@@ -20,8 +20,8 @@
 
                 {{-- การที่เราจะส่งข้อมูล มันจำต้องอยู่ใน form (ถ้าไม่ได้ใช้ api )||(action) กำหนดจุดหมายปลายทาง ของการส่งข้อมูล method="POST" เป็นวิธีการส่งข้อมูลไปยัง server --}}
 
-                <form action="" method="POST" class="row">
-
+                <form action="{{ route('create') }}" method="post" class="row">
+                    @csrf
                     <div class="form-group col-lg-2">
                         <label for="prefix_our" class="form-label">คำนำหน้า</label>
                         <select id="prefix_our" class="form-control" onchange="onSelectOur()">
@@ -226,6 +226,7 @@
                     </div>
 
                 </form>
+            
             </div>
         </div>
     </div>
