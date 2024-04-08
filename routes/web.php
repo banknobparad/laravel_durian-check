@@ -16,14 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/create', [App\Http\Controllers\DurianController::class, 'showcreate'])->name('showcreate');
+Route::get('/info',[App\Http\Controllers\DurianController::class, 'info'])->name('info');
+
+Route::get('/showcreate', [App\Http\Controllers\DurianController::class, 'showcreate'])->name('showcreate');
+Route::post('/create', [App\Http\Controllers\DurianController::class, 'create'])->name('create');
 
 Route::post('/fetch-amphures-our', [App\Http\Controllers\DurianController::class, 'fetchAmphuresOur'])->name('fetch-amphures-our');
 Route::post('/fetch-districts-our', [App\Http\Controllers\DurianController::class, 'fetchDistrictsOur'])->name('fetch-districts-our');

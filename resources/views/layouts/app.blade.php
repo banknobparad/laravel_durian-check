@@ -10,6 +10,10 @@
 
     <title>@yield('title')</title>
 
+    {{-- link Styles --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -27,7 +31,18 @@
 
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+
+    {{-- Datatable --}}
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    
+    
+    
     <!-- Scripts -->
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
         body {
@@ -41,7 +56,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <span style="color: #1d270d">ตรวจทุเรียนกับผมไหม</span>
+                    <span style="color: #1d270d">ตรวจทุเรียน RBRU</span>
                     {{-- <img src="{{asset('images/logo-head.png')}}" alt="logo-head" width="150"> --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -75,6 +90,10 @@
                             <li class="nav-item">
                                 <a class="nav-link  @yield('activeHome')"
                                     href="{{ route('showcreate') }}">{{ __('ลงทะเบียน') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link  @yield('activeHome')" href="{{ route('info') }}">{{ __('ดูข้อมูล') }}</a>
                             </li>
 
                             <li class="nav-item dropdown">

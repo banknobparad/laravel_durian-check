@@ -12,9 +12,9 @@
                                     alt="...">
 
                                 <div class="carousel-caption d-flex flex-column justify-content-end">
-                                    <h1>ทุเรียนส้มๆ</h1>
+                                    <h1>ตรวจทุเรียน</h1>
 
-                                    <p>แดกทุเรียนไหมสัส</p>
+                                    <p>RBRU</p>
                                 </div>
                             </div>
 
@@ -65,7 +65,7 @@
             <div class="row">
 
                 <div class="col-lg-10 col-12 text-center mx-auto">
-                    <h2 class="mb-5">ยินดีต้อนรับ นะไอ่สัช</h2>
+                    <h2 class="mb-5">ยินดีต้อนรับ</h2>
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
@@ -80,7 +80,7 @@
 
                 <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                     <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="#" class="d-block">
+                        <a href="{{route('info')}}" class="d-block">
                             <img src="images/icons/ssl.png" class="featured-block-image img-fluid" alt="" width="200px">
 
                             <p class="featured-block-text"><strong>ดู</strong>ข้อมูลของคุณ</p>
