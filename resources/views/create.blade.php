@@ -9,7 +9,7 @@
         }
     </style>
     <div class="container d-flex flex-column py-3">
-        <h2 class="text-center">กรอกข้อมูล</h2>
+        <h2 class="text-center">กรอกข้อมูล <i class="fa-solid fa-house"></i></h2>
         <div class="card shadow-sm rounded-3 my-auto col-md-11 mx-auto bg-white">
 
             <div class="card-header">
@@ -270,7 +270,7 @@
             nameInput.value = title + ' ' + currentName;
         }
 
-        // หลังจากที่เรียก script cnd มาแล้ว ตรงนี้คือ class ที่อ้างอิงถึงช่องที่เอาไว้กรอกเวลา การอ้างอิงถึง class จะใช้ . นำหน้า (".datepicker-his") 
+        // หลังจากที่เรียก script cnd มาแล้ว ตรงนี้คือ class ที่อ้างอิงถึงช่องที่เอาไว้กรอกเวลา การอ้างอิงถึง class จะใช้ . นำหน้า (".datepicker-his")
         $(document).ready(function() {
             // ให้ Flatpickr ทำงานกับ input ที่มี class เป็น datepicker-his
             $(".datepicker-his").flatpickr({

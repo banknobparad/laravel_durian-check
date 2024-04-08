@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Durian;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class DurianController extends Controller
         return view('create', compact('provinces'));
     }
 
-    // function พวกนี้เอาไว้ดึงข้อมูล อำเภอ ตำบล จาก datebase 
+    // function พวกนี้เอาไว้ดึงข้อมูล อำเภอ ตำบล จาก datebase
     public function fetchAmphuresOur(Request $request)
     {
         $provinceId = $request->input('province_id');
@@ -47,7 +48,7 @@ class DurianController extends Controller
         return response()->json($districts);
     }
 
-    // function create คือ function ที่เราจะส่งข้อมูลที่ได้รับมาจากหน้า create.blade.php function นี้จะส่งข้อมูลเข้า datebase 
+    // function create คือ function ที่เราจะส่งข้อมูลที่ได้รับมาจากหน้า create.blade.php function นี้จะส่งข้อมูลเข้า datebase
     public function create(Request $request)
     {
         // ส่วนแรกเลยคือ validate มันคือการตรวจสอบความถูกต้องตรวจสอบข้อมูลเช่น ชื่อก็ควรเป็นพยัญชนะเท่านั้นไม่มีตัวเลข
@@ -63,7 +64,7 @@ class DurianController extends Controller
                 'districts_our' => 'required',
                 'rel_our' => 'required',
 
-                // ส่วนของ his 
+                // ส่วนของ his
                 'name_his' => 'required|regex:/^[a-zA-Zก-๏\s]+$/u',
                 'provinces_his' => 'required',
                 'amphures_his' => 'required',
@@ -91,7 +92,7 @@ class DurianController extends Controller
                 'phone_number_our.regex' => 'กรุณาป้อนเบอร์โทรเป็น 10 ตัวอักษร',
 
                 'house_number_our' => 'กรุณากรอกบ้านเลขที่',
-               
+
                 'provinces_our' => 'กรุณากรอกจังหวัด',
                 'amphures_our' => 'กรุณากรอกอำเภอ',
                 'districts_our' => 'กรุณากรอกตำบล',
@@ -104,7 +105,7 @@ class DurianController extends Controller
 
         );
 
-        $input_our = [
+        $inputdata = [
             'name_our' => $request->name_our,
             'id_number_our' => $request->id_number_our,
             'phone_number_our' => $request->phone_number_our,
@@ -116,9 +117,7 @@ class DurianController extends Controller
             'amphures_our' => $request->amphures_our,
             'districts_our' => $request->districts_our,
             'rel_our' => $request->rel_our,
-        ];
 
-        $input_his = [
             'name_his' => $request->name_his,
             'moo_his' => $request->moo_his,
             'soi_his' => $request->soi_his,
@@ -133,6 +132,9 @@ class DurianController extends Controller
             'weight_his' => $request->weight_his,
         ];
 
-
+        Durian::create($inputdata);
     }
+
+
+
 }
