@@ -110,13 +110,7 @@ class DurianController extends Controller
 
         );
 
-<<<<<<< HEAD
         $inputdata = [
-=======
-        $input_our = [
-            'user_id' => auth()->user()->id,
-            'docs_id' => $docs_id,
->>>>>>> b6efda6a75856731e4a1363fb712f5f2a7e94d45
             'name_our' => $request->name_our,
             'id_number_our' => $request->id_number_our,
             'phone_number_our' => $request->phone_number_our,
@@ -128,10 +122,6 @@ class DurianController extends Controller
             'amphures_our' => $request->amphures_our,
             'districts_our' => $request->districts_our,
             'rel_our' => $request->rel_our,
-<<<<<<< HEAD
-
-=======
->>>>>>> b6efda6a75856731e4a1363fb712f5f2a7e94d45
             'name_his' => $request->name_his,
             'moo_his' => $request->moo_his,
             'soi_his' => $request->soi_his,
@@ -148,37 +138,15 @@ class DurianController extends Controller
 
         ];
         // dd($input_our);
-        Durian_detail::create($input_our);
+        // Durian_detail::create($input_our);
 
-<<<<<<< HEAD
         Durian::create($inputdata);
-=======
-        // $input_his = [
-        //     'name_his' => $request->name_his,
-        //     'moo_his' => $request->moo_his,
-        //     'soi_his' => $request->soi_his,
-        //     'road_his' => $request->road_his,
-        //     'provinces_his' => $request->provinces_his,
-        //     'amphures_his' => $request->amphures_his,
-        //     'districts_his' => $request->districts_his,
-        //     'date_his' => Carbon::createFromFormat('d/m/Y', $request->date_his)->format('Y-m-d'),
-        //     'quantity_his' => $request->quantity_his,
-        //     'area_his' => $request->area_his,
-        //     'type_his' => $request->type_his,
-        //     'weight_his' => $request->weight_his,
-        // ];
-
-        return redirect()->back();
     }
 
     public function info()
     {
-        $detail = Durian_detail::where('status', 1)->get();
-        // dd($detail);
-        return view('info', compact('detail'));
->>>>>>> b6efda6a75856731e4a1363fb712f5f2a7e94d45
+        $detail = Durian_detail::get();
+        return view('info',compact('detail'));
     }
-
-
 
 }

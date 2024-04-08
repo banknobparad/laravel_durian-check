@@ -1,0 +1,14 @@
+{
+    "thsarabunnew": {
+        "normal": "C:\\xampp\\htdocs\\laravel_durian-check\\storage\\fonts\/thsarabunnew_normal_0a0d0a05580b599b40cef64e5f72a49b",
+        "bold": "C:\\xampp\\htdocs\\laravel_durian-check\\storage\\fonts\/thsarabunnew_bold_b1907dc9f4e4e4c51d6e8dd82b965d4f",
+        "italic": "C:\\xampp\\htdocs\\laravel_durian-check\\storage\\fonts\/thsarabunnew_italic_fb7b8cacba8b8ec8f2da710d9708199c",
+        "bold_italic": "thsarabunnew_bold_italic_4b50b44c9163c8da3e01d7c82c4b7458"
+    },
+    "anuphan": {
+        "normal": "anuphan_normal_341b4b21d56e4a9c939d197cb7318094"
+    },
+    "bai jamjuree": {
+        "300": "bai_jamjuree_300_03a5d9cb2c78c28d4c950137f4c5f9e7"
+    }
+}

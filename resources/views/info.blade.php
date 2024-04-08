@@ -56,6 +56,9 @@
                         <th>วันที่ส่ง</th>
                         <th>เจ้าของสวน</th>
                         <th>เปอร์เซ็นน้ำตาล</th>
+                        <th>print</th>
+                        <th>แก้ไข</th>
+                        <th>ลบ</th>
                     </tr>
                 </thead>
                 @foreach ($detail as $item)
@@ -67,14 +70,20 @@
                             <td>{{ $item->created_at }}</td>
                             <td>{{ $item->name_his }}</td>
                             <td>{{ $item->weight_his }}</td>
-
+                            <td>
+                                <a href="{{route('pdf' , $item->docs_id)}}" class="btn btn-info" target="_blank">print</a>
+                            </td>
+                            <td>
+                                <a href="{{route('pdf' , $item->docs_id)}}" class="btn btn-warning">แก้ไข</a>
+                            </td>
+                            <td>
+                                <a href="{{route('pdf' , $item->docs_id)}}" class="btn btn-danger">ลบ</a>
+                            </td>
                         </tr>
                     </tbody>
                 @endforeach
             </table>
             
-
-
 
             <script>
                 $(document).ready(function() {
