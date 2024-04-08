@@ -13,14 +13,10 @@ return new class extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
-<<<<<<< HEAD
-            
-=======
 <<<<<<<< HEAD:database/migrations/2024_04_05_171151_create_tests_table.php
             $table->string('test');
 ========
 >>>>>>>> b6efda6a75856731e4a1363fb712f5f2a7e94d45:database/migrations/2024_04_05_171149_create_tests_table.php
->>>>>>> 25166187e4999918effa187072ff97a7b33ce6dd
             $table->timestamps();
         });
     }
