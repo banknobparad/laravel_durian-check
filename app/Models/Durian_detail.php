@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Durian_detail extends Model
 {
     use HasFactory;
+    
     protected $guarded =[];
 }
