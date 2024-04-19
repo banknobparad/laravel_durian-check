@@ -1,3 +1,4 @@
+php artisan migrate:refresh --path=/database/migrations/2014_10_12_000000_create_users_table.php
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,6 +15,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('role', ['Admin', 'User'])->default('User');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -10,4 +10,6 @@ class Durian_detail extends Model
     use HasFactory;
     
     protected $guarded =[];
+
+    
 }

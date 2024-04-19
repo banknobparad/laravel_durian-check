@@ -25,23 +25,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anuphan&display=swap" rel="stylesheet">
 
+    {{-- font awsome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- DataTables Bootstrap 5 Theme CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap5.css">
+    <!-- DataTables Responsive Bootstrap 5 Extension CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.bootstrap5.css">
 
-    {{-- Datatable --}}
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
-    
-    
-    
-    <!-- Scripts -->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables Core JS -->
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+    <!-- DataTables Bootstrap 5 Theme JS -->
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
+    <!-- DataTables Responsive Extension JS -->
+    <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
+    <!-- DataTables Responsive Bootstrap 5 Extension JS -->
+    <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
+
+    <!-- Bootstrap Bundle with Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
@@ -87,14 +100,29 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link  @yield('activeHome')"
-                                    href="{{ route('showcreate') }}">{{ __('ลงทะเบียน') }}</a>
-                            </li>
+                            @if (Auth::user()->role == 'User')
+                                <li class="nav-item">
+                                    <a class="nav-link  @yield('activeHome')"
+                                        href="{{ route('showcreate') }}">{{ __('ลงทะเบียน') }}</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link  @yield('activeHome')" href="{{ route('info') }}">{{ __('ดูข้อมูล') }}</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link  @yield('activeHome')"
+                                        href="{{ route('info') }}">{{ __('ดูข้อมูล') }}</a>
+                                </li>
+                            @endif
+                            @if (Auth::user()->role == 'Admin')
+                                <li class="nav-item">
+                                    <a class="nav-link  @yield('activeHome')"
+                                        href="{{ route('showcreate') }}">{{ __('ลงทะเบียน') }}</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link  @yield('activeHome')"
+                                        href="{{ route('infoAll') }}">{{ __('ดูข้อมูลทั้งหมด') }}</a>
+                                </li>
+                            @endif
+
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -124,6 +152,7 @@
             @yield('content')
         </div>
     </div>
+
 </body>
 
 </html>
