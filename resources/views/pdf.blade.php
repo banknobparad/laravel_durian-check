@@ -96,7 +96,7 @@
         }
     </style>
 </head>
- 
+
 <body>
     <table>
         <tr>
@@ -115,7 +115,7 @@
             <tr class="border-0">
                 <th scope="col" class="border-0"></th>
                 <th scope="col"class="border-0 text-center" style="width:600px"><strong
-                        style="font-size: 20px;">หนังสือรับรองผลกาจตรวจเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียน
+                        style="font-size: 20px;">หนังสือรับรองผลกาจตรวจก่อนตัด(ตรวจเปอร์เซ็นต์น้ำหนักเนื้อแห้งของทุเรียน)
                     </strong></th>
                 <th class="border-0"></th>
             </tr>
@@ -141,76 +141,21 @@
     </table>
 
     <table class="table border-0">
-        <thead class="border-0">
-            <tr class="border-0">
-                <th scope="col"class="border-0" style="width:200px; font-size: 18px;">ตามที่
-                    {{ $pdf_detail->name_our }}</th>
-                <th scope="col" class="border-0" style="width:250px ;font-size: 18px;">เลขประจำตัวประชาชน
-                    {{ $pdf_detail->id_number_our }}</th>
-                <th scope="col" class="border-0" style="font-size: 18px;">ที่อยู่บ้านเลขที่
-                    {{ $pdf_detail->house_number_our }}</th>
-                <th scope="col" class="border-0" style="font-size: 18px;">หมู่ที่ {{ $pdf_detail->moo_our }} </th>
-            </tr>
-
-        </thead>
-    </table>
-    <table class="table border-0">
-        <thead class="border-0">
-            <tr class="border-0">
-            <tr class="border-0">
-                <th scope="col" class="border-0 " style="font-size: 18px;">ตำบล {{ $district_name_our }}</th>
-                <th scope="col" class="border-0" style="font-size: 18px;">อำเภอ {{ $amphures_name_our }}
-                </th>
-                <th scope="col" class="border-0" style="font-size: 18px;">จังหวัด {{ $provinces_name_our }}
-                </th>
-                <th scope="col" class="border-0" style="font-size: 18px;">หมายเลขโทรศัพท์
-                    {{ $pdf_detail->phone_number_our }}</th>
-                <th scope="col" class="border-0" style="font-size: 18px;">มีสถานะเป็น {{ $pdf_detail->rel_our }}
-                </th>
-            </tr>
-        </thead>
-    </table>
-
-
-    <table class="table border-0">
-        <thead class="border-0">
-            <tr class="border-0">
-                <th scope="col" class="border-0 text-indent" style="font-size: 18px;">ได้นำจากแปลงปลูกของ
-                    {{ $pdf_detail->name_his }}</th>
-                <th scope="col" class="border-0" style="font-size: 18px;"> ที่ตั้งแปลงหมู่
-                    {{ $pdf_detail->moo_his }}</th>
-                <th scope="col" class="border-0" style="font-size: 18px;"> ตำบล {{ $district_name_his }}
-                </th>
-                <th scope="col" class="border-0" style="font-size: 18px;"> อำเภอ {{ $amphures_name_his }}
-                </th>
-            </tr>
-        </thead>
-    </table>
-
-    <table class="table border-0">
-        <thead class="border-0">
-            <tr class="border-0">
-            <tr class="border-0">
-                <th scope="col" class="border-0 " style="font-size: 18px;">จังหวัด
-                    {{ $provinces_name_his }}</th>
-                <th scope="col" class="border-0" style="font-size: 18px;">หมายเลขการรับรองGAP
-                    {{ $pdf_detail->gap_his }} </th>
-                <th scope="col" class="border-0" style="font-size: 18px;">โดยจะเก็บเกี่ยวในวันที่
-                    {{ $pdf_detail->date_his }}</th>
-            </tr>
-        </thead>
-    </table>
-
-    <table class="table border-0">
-        <thead class="border-0">
-            <tr class="border-0">
-            <tr class="border-0">
-                <th scope="col" class="border-0 " style="font-size: 18px;">ปริมาณผลผลิตที่คาดว่าจะเก็บเกี่ยว
-                    {{ $pdf_detail->quantity_his }} กิโลกรัม</th>
-                <th scope="col" class="border-0" style="font-size: 18px;">จำนวนพื้นที่ปลูก
-                    {{ $pdf_detail->area_his }} ไร่ </th>
-            </tr>
-        </thead>
+        <tr class="border-0">
+            <td scope="col"class="border-0 text-indent" style="width:150px;">ตามที่
+                <b>{{ $pdf_detail->name_our }}</b> เลขประจำตัวประชาชน <b>{{ $pdf_detail->id_number_our }}</b>
+                ที่อยู่บ้านเลขที่ <b>{{ $pdf_detail->house_number_our }}</b> หมู่ที่ <b>{{ $pdf_detail->moo_our }}</b>
+                ตำบล <b>{{ $district_name_our }}</b> อำเภอ <b>{{ $amphures_name_our }}</b> จังหวัด
+                <b>{{ $provinces_name_our }}</b>
+                หมายเลขโทรศัพท์ <b>{{ $pdf_detail->phone_number_our }}</b> มีสถานะเป็น <b>{{ $pdf_detail->rel_our }}
+                </b>ได้นำจากแปลงปลูกของ <b> {{ $pdf_detail->name_his }} </b>
+                ที่ตั้งแปลงหมู่ <b>{{ $pdf_detail->moo_his }}</b> ตำบล <b>{{ $district_name_his }}</b> อำเภอ
+                <b>{{ $amphures_name_his }}</b>
+                จังหวัด <b>{{ $provinces_name_his }}</b> หมายเลขการรับรองGAP <b>{{ $pdf_detail->gap_his }}
+                </b>โดยจะเก็บเกี่ยวในวันที่ <b>{{ $pdf_detail->date_his }}</b>
+                ปริมาณผลผลิตที่คาดว่าจะเก็บเกี่ยว <b>{{ $pdf_detail->quantity_his }}</b> กิโลกรัม จำนวนพื้นที่ปลูก
+                <b>{{ $pdf_detail->area_his }} </b> ไร่
+        </tr>
     </table>
 
     <table class="table border-0">
@@ -218,7 +163,6 @@
             <tr class="border-0">
             <tr class="border-0">
                 <th scope="col" class="border-0 text-indent" style="font-size: 18px;">
-                    ปริมาณผลผลิตที่คาดว่าจะเก็บเกี่ยว กิโลกรัม จำนวนพื้นที่ปลูก ไร่
                     จุดบริการตรวจก่อนตัดมหาวิทยาลัยราชภัฏรำไพพรรณี ได้ทำการตรวจเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียนด้วย
                     วิธี FT-NIR (Near Infrared spectroscopy)
                     ซึ่งผลการตรวจเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียนพัน({{ $pdf_detail->type_his }})
@@ -226,39 +170,32 @@
             </tr>
         </thead>
     </table>
-    
-    {{-- <div style="border: 1px solid black; padding: 20px; width: 250px;">
-        <p style="margin: 0;">มาตรฐานเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียน</p>
-        <p style="margin: 0;">พันธุ์กระดุม ไม่น้อยกว่า 27%</p>
-        <p style="margin: 0;">พันธุ์พวมณีและพันธุ์ชนี ไม่น้อยกว่า 30%</p>
-    </div> --}}
-   
 
     <table class="table border-1">
         <tbody>
+            <tr class="border-0">
+                <th scope="col" class="border-0" style="font-size: 20px;">มาตรฐานเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียน
+                </th>
+                <th class="border-0"></th>
+                <th scope="col"class="border-0 text-end" style="width:300px"><strong
+                        style="font-size: 20px;">ลงชื่อ...............................................ผู้ตรวจ</strong></th>
+            <tr class="border-0">
+                <th scope="col" class="border-1" style="font-size: 20px;">พันธุ์กระดุม ไม่น้อยกว่า 27%</th>
+                <th class="border-0"></th>
+                <th scope="col"class="border-0 text-end" style="width:300px"><strong
+                        style="font-size: 20px;">(..............................................................)</strong></th>
 
-
             <tr class="border-0">
-                <th scope="col" class="border-1">มาตรฐานเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียน</th>
+                <th scope="col" class="border-1" style="font-size: 20px;">พันธุ์พวมณีและพันธุ์ชนี ไม่น้อยกว่า 30%
+                </th>
                 <th class="border-0"></th>
                 <th scope="col"class="border-0 text-end" style="width:300px"><strong
-                        style="font-size: 20px;">ลงชื่อ...............................ผู้ตรวจ</strong></th>
+                        style="font-size: 20px;">ลงชื่อ...............................................ผู้รับรอง</strong></th>
             <tr class="border-0">
-                <th scope="col" class="border-1">พันธุ์กระดุม ไม่น้อยกว่า 27%</th>
+                <th scope="col" class="border-1">พันธุ์หมอนทอง ไม่น้อยกว่า32%</th>
                 <th class="border-0"></th>
                 <th scope="col"class="border-0 text-end" style="width:300px"><strong
-                        style="font-size: 20px;">(................................................)</strong></th>
-
-            <tr class="border-0">
-                <th scope="col" class="border-1">พันธุ์พวมณีและพันธุ์ชนี ไม่น้อยกว่า 30%</th>
-                <th class="border-0"></th>
-                <th scope="col"class="border-0 text-end" style="width:300px"><strong
-                        style="font-size: 20px;">ลงชื่อ...............................ผู้รับรอง</strong></th>
-            <tr class="border-0">
-                <th scope="col" class="border-0"></th>
-                <th class="border-0"></th>
-                <th scope="col"class="border-0 text-end" style="width:300px"><strong
-                        style="font-size: 20px;">(................................................)</strong></th>
+                        style="font-size: 20px;">(ผู้ช่วยศาสตราจารย์ ดร.เดือนรุ่ง เบญจมาศ)</strong></th>
             </tr>
         </tbody>
     </table>
@@ -266,11 +203,42 @@
     <table class="table border-0">
         <thead class="border-0">
             <tr class="border-0">
-                <th scope="col" class="border-0 text-indent" style="font-size: 18px; font-weight: bold;">
-                    หนังสือรับรองผลการตรวจเปอร์เซ็นต์น้ำหนักเนื้อแห้งของทุเรียน มีอายุรับรอง 10 วัน นับตั้งแต่วันที่นำทุเรียนมาตรวจ
+                <strong scope="col" class="border-0 text-center" style="font-size: 20px;">
+                    หนังสือรับรองผลการตรวจเปอร์เซ็นต์น้ำหนักเนื้อแห้งของทุเรียน มีอายุรับรอง 10 วัน
+                    นับตั้งแต่วันที่นำทุเรียนมาตรวจ
+                </strong>
+            </tr>
+            <tr>
+                <th scope="col" class="border-0 text-center" style="font-size: 18px;">
+                    ข้าพเจ้าได้รับทราบผลการตรวจเปอร์เซ็นต์น้ำหนักเนื้อแห้งของทุเรียน ครั้งนี้เรียบร้อยแล้ว
                 </th>
             </tr>
         </thead>
+    </table>
+
+    <table class="table border-1">
+        <tbody>
+            <tr class="border-0">
+                <th scope="col" class="border-0"></th>
+                <th class="border-0"></th>
+                <th scope="col"class="border-0 text-end" style="width:300px"><strong
+                        style="font-size: 20px;">ลงชื่อ...............................................ผู้ส่งตรวจ</strong></th>
+            <tr class="border-0">
+                <th scope="col" class="border-0">หมายเหตุ</th>
+                <th class="border-0"></th>
+                <th scope="col"class="border-0 text-center" style="width:300px"><strong
+                        style="font-size: 20px;">({{ $pdf_detail->name_our }})</strong></th>
+        </tbody>
+    </table>
+    <table class="table border-0">
+        <tbody>
+            <tr class="border-0">
+                <th scope="col" class="border-0" style=" width:300px; font-size: 18px;">1.ผู้รับรอง
+                    หมายถึงหัวหน้าชุปฏิบัติการประจำจุบริการตรวจก่อนตัในพื้นที่ตั้งแปลง</th>
+            <tr>
+                <th scope="col" class="border-0" style=" width:300px; font-size: 18px;">
+                2.การรับรองผลตรวจเปอร์เซ็นต์น้ำหนักเนื้อแห้งของทุเรียนจะให้การรับรองผลการตรวจเฉพาะตัวอย่างทุเรียนที่ส่งตรวจนี้เท่านั้น</th>
+            </tr>
     </table>
 
 </body>
