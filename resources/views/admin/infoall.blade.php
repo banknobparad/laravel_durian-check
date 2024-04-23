@@ -53,7 +53,7 @@
                         <th style="text-align: left;">พันธุ์ทุเรียน</th>
                         <th style="text-align: left;">วันที่ส่ง</th>
                         <th style="text-align: left;">เจ้าของสวน</th>
-                        <th style="text-align: left;">เปอร์เซ็นน้ำตาล</th>
+                        <th style="text-align: left;">เบอร์โทรศัพท์</th>
                         <th style="text-align: left;">แก้ไข</th>
                         <th style="text-align: left;">ลบ</th>
                         <th style="text-align: left;">ปริ้น</th>
@@ -62,10 +62,10 @@
                 </thead>
                 <thead>
                     @foreach ($user as $item)
-                        <tr>
+                        {{-- <tr>
                             <th colspan="10" style="text-align: left; font-weith: bold; background-color: #ffffff">
                                 ชื่อผู่ใช้งาน {{ $item->name }}</th>
-                        </tr>
+                        </tr> --}}
                 </thead>
                 <tbody>
                     <tr>
@@ -75,7 +75,7 @@
                             <td style="text-align: left;">{{ $item->type_his }}</td>
                             <td style="text-align: left;">{{ $item->created_at }}</td>
                             <td style="text-align: left;">{{ $item->name_his }}</td>
-                            <td style="text-align: left;">{{ $item->weight_his }}</td>
+                            <td style="text-align: left;">{{ $item->phone_number_our }}</td>
                             <td style="text-align: left;">
                                 <a href="{{ route('pdf', $item->docs_id) }}" class="btn btn-warning">แก้ไข</a>
                             </td>

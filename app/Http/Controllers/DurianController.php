@@ -66,50 +66,53 @@ class DurianController extends Controller
         $request->validate(
             [
                 // ส่วนของ our our คือของเรา
-                /*                 'name_our' => 'required|regex:/^[a-zA-Zก-๏\s]+$/u',
-                'id_number_our' => 'required|numeric|regex:/^\d{13}$/',
-                'phone_number_our' => 'required|numeric|regex:/^\d{10}$/|',
-                'house_number_our' => 'required',
-                'provinces_our' => 'required',
-                'amphures_our' => 'required',
-                'districts_our' => 'required',
-                'rel_our' => 'required',
+                //                 'name_our' => 'required|regex:/^[a-zA-Zก-๏\s]+$/u',
+                // 'id_number_our' => 'required|numeric|regex:/^\d{13}$/',
+                // 'phone_number_our' => 'required|numeric|regex:/^\d{10}$/|',
+                // 'house_number_our' => 'required',
+                // 'provinces_our' => 'required',
+                // 'amphures_our' => 'required',
+                // 'districts_our' => 'required',
+                // 'rel_our' => 'required',
 
-                // ส่วนของ his
-                'name_his' => 'required|regex:/^[a-zA-Zก-๏\s]+$/u',
-                'provinces_his' => 'required',
-                'amphures_his' => 'required',
-                'districts_his' => 'required',
-                'gap_his' => 'required',
-                'date_his' => 'required',
-                'quantity_his' => 'required',
-                'area_his' => 'required',
-                'type_his' => 'required',
-                'weight_his' => 'required', */],
+                // // ส่วนของ his
+                // 'name_his' => 'required|regex:/^[a-zA-Zก-๏\s]+$/u',
+                // 'provinces_his' => 'required',
+                // 'amphures_his' => 'required',
+                // 'districts_his' => 'required',
+                // 'gap_his' => 'required',
+                // 'date_his' => 'required',
+                // 'quantity_his' => 'required',
+                // 'area_his' => 'required',
+                // 'type_his' => 'required',
+                // 'weight_his' => 'required', 
+            ],
+
             [
                 // พิมพ์ข้อความแจ้งเตือน
                 // our
-                /*              'name_our.required' => 'กรุณาป้อนชื่อ',
-                'name_our.regex' => 'กรุณาป้อนชื่อเป็นตัวหนังสือเท่านั้น',
+                //             'name_our.required' => 'กรุณาป้อนชื่อ',
+                // 'name_our.regex' => 'กรุณาป้อนชื่อเป็นตัวหนังสือเท่านั้น',
 
-                'id_number_our.required' => 'กรุณาป้อนเลขบัตรประชาชน',
-                'id_number_our.numeric' => 'กรุณาป้อนเลขบัตรประชาชนเป็นตัวเลขเท่านั้น',
-                'id_number_our.regex' => 'กรุณาป้อนเลขบัตรประชาชนเป็น 13 ตัวอักษร',
+                // 'id_number_our.required' => 'กรุณาป้อนเลขบัตรประชาชน',
+                // 'id_number_our.numeric' => 'กรุณาป้อนเลขบัตรประชาชนเป็นตัวเลขเท่านั้น',
+                // 'id_number_our.regex' => 'กรุณาป้อนเลขบัตรประชาชนเป็น 13 ตัวอักษร',
 
-                'phone_number_our.required' => 'กรุณาป้อนเบอร์โทร',
-                'phone_number_our.numeric' => 'กรุณาป้อนเบอร์โทรเป็นตัวเลขเท่านั้น',
-                'phone_number_our.regex' => 'กรุณาป้อนเบอร์โทรเป็น 10 ตัวอักษร',
+                // 'phone_number_our.required' => 'กรุณาป้อนเบอร์โทร',
+                // 'phone_number_our.numeric' => 'กรุณาป้อนเบอร์โทรเป็นตัวเลขเท่านั้น',
+                // 'phone_number_our.regex' => 'กรุณาป้อนเบอร์โทรเป็น 10 ตัวอักษร',
 
-                'house_number_our' => 'กรุณากรอกบ้านเลขที่',
+                // 'house_number_our' => 'กรุณากรอกบ้านเลขที่',
 
-                'provinces_our' => 'กรุณากรอกจังหวัด',
-                'amphures_our' => 'กรุณากรอกอำเภอ',
-                'districts_our' => 'กรุณากรอกตำบล',
-                'rel_our' => 'กรุณากรอกความสัมพันธ์เกี่ยวกับเจ้าของแปลง',
+                // 'provinces_our' => 'กรุณากรอกจังหวัด',
+                // 'amphures_our' => 'กรุณากรอกอำเภอ',
+                // 'districts_our' => 'กรุณากรอกตำบล',
+                // 'rel_our' => 'กรุณากรอกความสัมพันธ์เกี่ยวกับเจ้าของแปลง',
 
-                // his
-                'name_his.required' => 'กรุณาป้อนชื่อ',
-                'name_his.regex' => 'กรุณาป้อนชื่อเป็นตัวหนังสือเท่านั้น', */]
+                // // his
+                // 'name_his.required' => 'กรุณาป้อนชื่อ',
+                // 'name_his.regex' => 'กรุณาป้อนชื่อเป็นตัวหนังสือเท่านั้น',
+                 ]
 
         );
 

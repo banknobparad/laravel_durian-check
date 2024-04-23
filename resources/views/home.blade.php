@@ -30,10 +30,10 @@
                             </div>
 
                             <div class="carousel-item">
-                                <img src="images/cover3.png"
+                                <img src="images/cover6.jpg"
                                     class="carousel-image img-fluid" alt="...">
 
-                                <div class="carousel-caption d-flex flex-column justify-content-end">
+                                <div class="carousel-caption d-flex flex-column jusvvvtify-content-end">
                                     <h1>ลิงกินทุเรียน</h1>
 
                                     <p>เคยเห็นไหม ลิงกินทุเรียน</p>

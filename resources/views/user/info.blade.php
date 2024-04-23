@@ -52,7 +52,7 @@
                         <th>พันธุ์ทุเรียน</th>
                         <th>วันที่ส่ง</th>
                         <th>เจ้าของสวน</th>
-                        <th>เปอร์เซ็นน้ำตาล</th>
+                        <th>เบอร์โทรศัพท์</th>
                         <th>แก้ไข</th>
 
                     </tr>
@@ -65,7 +65,7 @@
                             <td>{{ $item->type_his }}</td>
                             <td>{{ $item->created_at }}</td>
                             <td>{{ $item->name_his }}</td>
-                            <td>{{ $item->weight_his }}</td>
+                            <td>{{ $item->phone_number_our }}</td>
                             <td>
                                 <a href="{{ route('edit', $item->id) }}" class="btn btn-warning">แก้ไข</a>
                             </td>
@@ -92,7 +92,7 @@
                     "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 รายการ",
                     "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกหมวดหมู่)",
                     "sInfoPostFix": "",
-                    "sSearch": "ค้นหาควย:",
+                    "sSearch": "ค้นหา:",
                     "sUrl": "",
                     "oPaginate": {
                         // "sFirst": "เริ่มต้น",

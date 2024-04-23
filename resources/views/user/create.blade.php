@@ -211,13 +211,13 @@
                             class="form-control @error('type_his') is-invalid @enderror @if (!empty(old('type_his'))) is-valid @endif"
                             value="{{ old('type_his') }}">
                     </div>
-                    <div class="form-group col-lg-3">
+                    {{-- <div class="form-group col-lg-3">
                         <label for="weight_his" class="form-label">เปอร์เซ็นน้ำหนักแห้งในเนื้อทุเรียน
                             (เปอร์เซ็น)</label>
                         <input type="text" name="weight_his" id="weight_his" placeholder="กรอกพันธุ์ทุเรียน"
                             class="form-control @error('weight_his') is-invalid @enderror @if (!empty(old('weight_his'))) is-valid @endif"
                             value="{{ old('weight_his') }}">
-                    </div>
+                    </div> --}}
 
 
 

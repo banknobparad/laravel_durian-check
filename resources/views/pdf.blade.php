@@ -96,24 +96,22 @@
         }
     </style>
 </head>
-
+ 
 <body>
-
-
+    <table>
+        <tr>
+            <td style="border: 1px solid #000; text-align: center;">
+                <img src="images/icons/Rbru.png" class="featured-block-image img-fluid" alt="" width="50px">
+                <img src="images/icons/rbru2.png" class="featured-block-image img-fluid" alt="" width="50px">
+                <img src="{{ public_path('images/' . $image) }}" width="80px">
+            <td style="border: 1px solid #000; text-align: left;">
+                <p style="font-size: 24px;"><strong>หน่วยงานให้บริการ</strong></p>
+                <p><strong>จุดบริการตรวจก่อนตัดมหาวิทยาลัยราชภัฏรำไพพรรณี</strong></p>
+            </td>
+        </tr>
+    </table>
     <table class="table border-0">
         <thead class="border-0">
-            <tr class="border-0">
-                <th scope="col" class="border-0"></th>
-                <th scope="col"class="border-0 text-center" style="width:600px"><strong
-                        style="font-size: 20px;">หน่วยงานให้บริการ</strong></th>
-                <th class="border-0"></th>
-            </tr>
-            <tr class="border-0">
-                <th scope="col" class="border-0"></th>
-                <th scope="col"class="border-0 text-center" style="width:600px"><strong
-                        style="font-size: 20px;">จุคบริการตรวจก่อนตัดมหาวิทยาลัยราชภัฏรำไพพรรณี</strong></th>
-                <th class="border-0"></th>
-            </tr>
             <tr class="border-0">
                 <th scope="col" class="border-0"></th>
                 <th scope="col"class="border-0 text-center" style="width:600px"><strong
@@ -224,47 +222,55 @@
                     จุดบริการตรวจก่อนตัดมหาวิทยาลัยราชภัฏรำไพพรรณี ได้ทำการตรวจเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียนด้วย
                     วิธี FT-NIR (Near Infrared spectroscopy)
                     ซึ่งผลการตรวจเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียนพัน({{ $pdf_detail->type_his }})
-                    ที่ตรวจมีเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียน{{ $pdf_detail->weight_his }}% ()</th>
+                    ที่ตรวจมีเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียน_______% (_______)</th>
             </tr>
         </thead>
     </table>
-
-    <div style="border: 1px solid black; padding: 20px; width: 250px;">
+    
+    {{-- <div style="border: 1px solid black; padding: 20px; width: 250px;">
         <p style="margin: 0;">มาตรฐานเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียน</p>
         <p style="margin: 0;">พันธุ์กระดุม ไม่น้อยกว่า 27%</p>
         <p style="margin: 0;">พันธุ์พวมณีและพันธุ์ชนี ไม่น้อยกว่า 30%</p>
-    </div>
+    </div> --}}
+   
 
+    <table class="table border-1">
+        <tbody>
+
+
+            <tr class="border-0">
+                <th scope="col" class="border-1">มาตรฐานเปอร์เซ็นต์น้ำหนักแห้งในเนื้อทุเรียน</th>
+                <th class="border-0"></th>
+                <th scope="col"class="border-0 text-end" style="width:300px"><strong
+                        style="font-size: 20px;">ลงชื่อ...............................ผู้ตรวจ</strong></th>
+            <tr class="border-0">
+                <th scope="col" class="border-1">พันธุ์กระดุม ไม่น้อยกว่า 27%</th>
+                <th class="border-0"></th>
+                <th scope="col"class="border-0 text-end" style="width:300px"><strong
+                        style="font-size: 20px;">(................................................)</strong></th>
+
+            <tr class="border-0">
+                <th scope="col" class="border-1">พันธุ์พวมณีและพันธุ์ชนี ไม่น้อยกว่า 30%</th>
+                <th class="border-0"></th>
+                <th scope="col"class="border-0 text-end" style="width:300px"><strong
+                        style="font-size: 20px;">ลงชื่อ...............................ผู้รับรอง</strong></th>
+            <tr class="border-0">
+                <th scope="col" class="border-0"></th>
+                <th class="border-0"></th>
+                <th scope="col"class="border-0 text-end" style="width:300px"><strong
+                        style="font-size: 20px;">(................................................)</strong></th>
+            </tr>
+        </tbody>
     </table>
+
     <table class="table border-0">
         <thead class="border-0">
             <tr class="border-0">
-                <th scope="col" class="border-0"></th>
-                <th scope="col"class="border-0 text-end" style="width:600px"><strong
-                        style="font-size: 20px;">ลงชื่อ...............................ผู้ตรวจ</strong></th>
-                <th class="border-0"></th>
-            </tr>
-            <tr class="border-0">
-                <th scope="col" class="border-0"></th>
-                <th scope="col"class="border-0 text-end" style="width:600px"><strong
-                        style="font-size: 20px;">(................................................)</strong></th>
-                <th class="border-0"></th>
+                <th scope="col" class="border-0 text-indent" style="font-size: 18px; font-weight: bold;">
+                    หนังสือรับรองผลการตรวจเปอร์เซ็นต์น้ำหนักเนื้อแห้งของทุเรียน มีอายุรับรอง 10 วัน นับตั้งแต่วันที่นำทุเรียนมาตรวจ
+                </th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="border-0">
-                <th scope="col" class="border-0"></th>
-                <th scope="col"class="border-0 text-end" style="width:600px"><strong
-                        style="font-size: 20px;">ลงชื่อ...............................ผู้รับรอง</strong></th>
-                <th class="border-0"></th>
-            </tr>
-            <tr class="border-0">
-                <th scope="col" class="border-0"></th>
-                <th scope="col"class="border-0 text-end" style="width:600px"><strong
-                        style="font-size: 20px;">(................................................)</strong></th>
-                <th class="border-0"></th>
-            </tr>
-        </tbody>
     </table>
 
 </body>
