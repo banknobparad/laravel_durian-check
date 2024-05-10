@@ -56,6 +56,9 @@
     <!-- Bootstrap Bundle with Popper.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.min.css" rel="stylesheet">
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
         body {
@@ -120,6 +123,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link  @yield('activeHome')"
                                         href="{{ route('infoAll') }}">{{ __('ดูข้อมูลทั้งหมด') }}</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link  @yield('activeHome')"
+                                        href="{{ route('check') }}">{{ __('ข้อมูลการลงทะเบียน') }}</a>
                                 </li>
                             @endif
 

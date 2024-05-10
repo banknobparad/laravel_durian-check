@@ -8,15 +8,34 @@
             padding: 10px;
         }
     </style>
+
+
+
     <div class="container d-flex flex-column py-3">
+
         <h2 class="text-center">กรอกข้อมูล <i class="fa-solid fa-house"></i></h2>
+
+        <div class="row justify-content-end py-3">
+            <div class="col-md-3 d-flex align-items-end">
+                <label for="search_input" class="col-form-label">ค้นหา GAP</label>
+                <input type="text" class="form-control" id="search_input" name="search_input" placeholder="ค้นหา...">
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="button" class="btn btn-primary btn-block" onclick="searchData()">ค้นหา</button>
+            </div>
+        </div>
+
+
+
         <div class="card shadow-sm rounded-3 my-auto col-md-11 mx-auto bg-white">
+
 
             <div class="card-header">
                 <h5>ข้อมูลของคุณ</h5>
             </div>
 
-            <div class="card-body p-4">
+            <div class="card-body p-4 row">
+
 
                 {{-- การที่เราจะส่งข้อมูล มันจำต้องอยู่ใน form (ถ้าไม่ได้ใช้ api )||(action) กำหนดจุดหมายปลายทาง ของการส่งข้อมูล method="POST" เป็นวิธีการส่งข้อมูลไปยัง server --}}
 
@@ -226,10 +245,20 @@
                     </div>
 
                 </form>
-            
+
             </div>
         </div>
     </div>
+
+    @if (session()->has('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'เกิดข้อผิดพลาด!',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
 
     {{-- script สำหรับ ajax ที่ดึงข้อมูลจาก database --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -389,6 +418,63 @@
                 });
             });
         });
+    </script>
+
+
+    <script>
+        function searchData() {
+            var gapNumber = $('#search_input').val(); // รับค่า GAP ที่กรอกจาก input
+
+            // ทำ AJAX request เพื่อดึงข้อมูล GAP จากฐานข้อมูล
+            $.ajax({
+                type: "POST",
+                url: "{{ route('search-gap') }}", // ตั้งค่า URL ของเส้นทางให้เรียกฟังก์ชันใน Controller ของคุณ
+                data: {
+                    gap_number: gapNumber
+                },
+                success: function(data) {
+                    console.log(data);
+
+                    if (data) {
+                        $('#name_our').val(data.name_our);
+                        $('#id_number_our').val(data.id_number_our);
+                        $('#phone_number_our').val(data.phone_number_our);
+                        $('#house_number_our').val(data.house_number_our);
+                        $('#moo_our').val(data.moo_our);
+                        $('#soi_our').val(data.soi_our);
+                        $('#road_our').val(data.road_our);
+                        $('#rel_our').val(data.rel_our);
+                        $('#name_his').val(data.name_his);
+                        $('#moo_his').val(data.moo_his);
+                        $('#soi_his').val(data.soi_his);
+                        $('#road_his').val(data.road_his);
+                        $('#gap_his').val(data.gap_his);
+                        $('#date_his').val(data.date_his);
+                        $('#quantity_his').val(data.quantity_his);
+                        $('#area_his').val(data.area_his);
+                        $('#type_his').val(data.type_his);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'ค้นหาข้อมูลสำเร็จ',
+                            text: 'โปรดกรอก จังหวัด อำเภอ ตำบลอีกครั้ง',
+                            timer: 4000, // แสดงข้อความเป็นเวลา 4 วินาที
+                            timerProgressBar: true
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // กรณีเกิดข้อผิดพลาดในการร้องขอ AJAX
+                    console.error(xhr.responseText);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'ไม่พบข้อมูล',
+                        text: 'โปรดตรวจสอบ GAP ของท่านอีกครั้ง',
+                        timer: 4000, // แสดงข้อความเป็นเวลา 4 วินาที
+                        timerProgressBar: true
+                    });
+                }
+            });
+        }
     </script>
 
 @endsection

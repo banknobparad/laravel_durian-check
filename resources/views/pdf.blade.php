@@ -101,9 +101,9 @@
     <table>
         <tr>
             <td style="border: 1px solid #000; text-align: center;">
-                <img src="images/icons/Rbru.png" class="featured-block-image img-fluid" alt="" width="50px">
-                <img src="images/icons/rbru2.png" class="featured-block-image img-fluid" alt="" width="50px">
-                <img src="{{ public_path('images/' . $image) }}" width="80px">
+                <img src="{{ asset('images/Rbru.png') }}" class="featured-block-image img-fluid" alt="" width="50px">
+                <img src="{{ asset('images/rbru2.png') }}" class="featured-block-image img-fluid" alt="" width="50px">
+                {{-- <img src="{{ public_path('images/' . $image) }}" width="80px"> --}}
             <td style="border: 1px solid #000; text-align: left;">
                 <p style="font-size: 24px;"><strong>หน่วยงานให้บริการ</strong></p>
                 <p><strong>จุดบริการตรวจก่อนตัดมหาวิทยาลัยราชภัฏรำไพพรรณี</strong></p>

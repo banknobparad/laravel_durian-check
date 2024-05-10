@@ -14,6 +14,10 @@ class AdminController extends Controller
         $this->middleware('admin');
     }
 
+    public function check(){
+        return view('admin.check');
+    }
+
     public function infoAll()
     {
         $user = User::where('role', '!=', 'Admin')->with('Durian_detail')->get();

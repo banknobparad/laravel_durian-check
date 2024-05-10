@@ -32,6 +32,9 @@ Route::middleware([User::class])->group(function () {
     Route::get('/edit/{id}', [App\Http\Controllers\DurianController::class, 'edit'])->name('edit');
     Route::post('/update/{id}', [App\Http\Controllers\DurianController::class, 'update'])->name('update');
 
+    Route::post('/search-gap', [App\Http\Controllers\DurianController::class, 'searchGap'])->name('search-gap');
+
+
 
     Route::post('/fetch-amphures-our', [App\Http\Controllers\DurianController::class, 'fetchAmphuresOur'])->name('fetch-amphures-our');
     Route::post('/fetch-districts-our', [App\Http\Controllers\DurianController::class, 'fetchDistrictsOur'])->name('fetch-districts-our');
@@ -43,6 +46,8 @@ Route::middleware([Admin::class])->group(function () {
     Route::get('info/all', [App\Http\Controllers\AdminController::class, 'infoAll'])->name('infoAll');
     Route::get('delete/{id}', [App\Http\Controllers\AdminController::class, 'delete'])->name('delete');
     Route::get('/change/{id}', [App\Http\Controllers\AdminController::class, 'change'])->name('change');
+
+    Route::get('check', [App\Http\Controllers\AdminController::class, 'check'])->name('check');
 });
 
 
