@@ -55,6 +55,8 @@ Route::middleware([Admin::class])->group(function () {
     Route::post('/delete-checkdata', [App\Http\Controllers\AdminController::class, 'deletecheckdata'])->name('deletecheckdata');
 
 
+    Route::get('report', [App\Http\Controllers\AdminController::class, 'report'])->name('report');
+
 });
 
 

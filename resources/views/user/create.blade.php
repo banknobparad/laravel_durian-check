@@ -2,6 +2,10 @@
 
 @section('title', 'กรอกข้อมูล')
 
+@section('activeCreate')
+    active border-2 border-bottom border-warning
+@endsection
+
 @section('content')
     <style>
         .form-group {

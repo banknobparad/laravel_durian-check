@@ -2,6 +2,10 @@
 
 @section('title', 'ดูข้อมูล')
 
+@section('activeInfoall')
+    active border-2 border-bottom border-warning
+@endsection
+
 @section('content')
     <style>
         .form-group {
@@ -76,7 +80,7 @@
                                 <td>
                                     <div class="dropdown">
                                         <button
-                                            class="btn btn-primary dropdown-toggle @if ($detail->status == 'รอตรวจสอบ') btn-warning @elseif($detail->status == 'ผ่าน') btn-success @elseif($detail->status == 'ไม่ผ่าน') btn-danger @endif"
+                                            class="btn btn-primary dropdown-toggle @if ($detail->status == 'รอตรวจสอบ') btn-secondary @elseif($detail->status == 'ผ่าน') btn-success @elseif($detail->status == 'ไม่ผ่าน') btn-danger @endif"
                                             type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
                                             @if ($detail->status == 'รอตรวจสอบ')

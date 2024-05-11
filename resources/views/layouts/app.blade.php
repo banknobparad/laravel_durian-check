@@ -105,28 +105,28 @@
                         @else
                             @if (Auth::user()->role == 'User')
                                 <li class="nav-item">
-                                    <a class="nav-link  @yield('activeHome')"
+                                    <a class="nav-link  @yield('activeCreate')"
                                         href="{{ route('showcreate') }}">{{ __('ลงทะเบียน') }}</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link  @yield('activeHome')"
+                                    <a class="nav-link  @yield('activeInfo')"
                                         href="{{ route('info') }}">{{ __('ดูข้อมูล') }}</a>
                                 </li>
                             @endif
                             @if (Auth::user()->role == 'Admin')
                                 <li class="nav-item">
-                                    <a class="nav-link  @yield('activeHome')"
-                                        href="{{ route('showcreate') }}">{{ __('ลงทะเบียน') }}</a>
+                                    <a class="nav-link  @yield('activeReport')"
+                                        href="{{ route('report') }}">{{ __('รายงาน') }}</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link  @yield('activeHome')"
+                                    <a class="nav-link  @yield('activeInfoall')"
                                         href="{{ route('infoAll') }}">{{ __('ดูข้อมูลทั้งหมด') }}</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link  @yield('activeHome')"
+                                    <a class="nav-link  @yield('activeCheck')"
                                         href="{{ route('check') }}">{{ __('ข้อมูลการลงทะเบียน') }}</a>
                                 </li>
                             @endif

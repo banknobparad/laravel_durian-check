@@ -81,13 +81,17 @@ class AdminController extends Controller
         switch ($durian->status) {
             case 'รอตรวจสอบ':
                 $newStatus = 'ผ่าน';
-                $newDate = Carbon::now()->addDays(10)->toDateString(); // เพิ่มวันที่อีก 10 วัน
+                $newDate = Carbon::now()->addDays(11)->toDateString(); // เพิ่มวันที่อีก 10 วัน
                 break;
             case 'ผ่าน':
                 $newStatus = 'ไม่ผ่าน';
+                // ลบข้อมูลวันในฟิลล์ date
+                $newDate = null;
                 break;
             case 'ไม่ผ่าน':
                 $newStatus = 'รอตรวจสอบ';
+                // ลบข้อมูลวันในฟิลล์ date
+                $newDate = null;
                 break;
             default:
                 // ค่าเริ่มต้นหรือการจัดการข้อผิดพลาด
@@ -96,11 +100,17 @@ class AdminController extends Controller
 
         $data = [
             'status' => $newStatus,
-            'date' => $newDate, // อัพเดทวันที่ใหม่
+            'date' => $newDate, // อัพเดทวันที่ใหม่ (หรือ null ถ้าไม่มีวันที่)
         ];
 
         $durian->update($data);
 
         return redirect()->back();
+    }
+
+
+    public function report()
+    {
+        return view('admin.report');
     }
 }

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'User Registration Information')
+@section('title', 'Check')
+
+@section('activeCheck')
+    active border-2 border-bottom border-warning
+@endsection
 
 @section('content')
     <div class="container py-5">
@@ -113,7 +117,7 @@
                 var midnight = new Date(
                     now.getFullYear(),
                     now.getMonth(),
-                    now.getDate() + 1,
+                    now.getDate() +1,
                     now.getHours(),
                     now.getMinutes(),
                     0, 0, 0

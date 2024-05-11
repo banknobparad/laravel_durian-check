@@ -2,6 +2,10 @@
 
 @section('title', 'ดูข้อมูล')
 
+@section('activeInfo')
+    active border-2 border-bottom border-warning
+@endsection
+
 @section('content')
     <style>
         .form-group {
@@ -75,8 +79,6 @@
                                     <button class="btn btn-secondary">{{ $item->status }}</button>
                                 @elseif($item->status == 'ผ่าน')
                                     <button class="btn btn-success">{{ $item->status }}</button>
-                                    @if (!empty($item->date))
-                                    @endif
                                 @elseif($item->status == 'ไม่ผ่าน')
                                     <button class="btn btn-danger">{{ $item->status }}</button>
                                 @endif
@@ -87,8 +89,12 @@
                                         \Carbon\Carbon::now(),
                                     );
                                 @endphp
-                                {{ $remainingDays }} วัน
+                            
+                                @if($remainingDays > 0)
+                                    {{ $remainingDays }} วัน
+                                @endif
                             </td>
+                            
 
                         </tr>
                     @endforeach
