@@ -37,15 +37,11 @@
         <div class="row justify-content-center">
             <div class="card-body">
                 <div class="text-center">
-                    <h1>ข้อมูลของ User</h1>
+                    <h1>ข้อมูลของผู้ลงทะเบียน</h1>
                 </div>
             </div>
-            {{-- @php
-                dd($user);
-            @endphp --}}
 
             <table id="durain" class="table" style="width:100%">
-
                 <thead>
                     <tr>
                         <th style="text-align: left;">ชื่อผู้ตรวจ</th>
@@ -54,53 +50,62 @@
                         <th style="text-align: left;">วันที่ส่ง</th>
                         <th style="text-align: left;">เจ้าของสวน</th>
                         <th style="text-align: left;">เบอร์โทรศัพท์</th>
-                        <th style="text-align: left;">แก้ไข</th>
                         <th style="text-align: left;">ลบ</th>
                         <th style="text-align: left;">ปริ้น</th>
                         <th style="text-align: left;">สถานะ</th>
                     </tr>
                 </thead>
-                <thead>
-                    @foreach ($user as $item)
-                        {{-- <tr>
-                            <th colspan="10" style="text-align: left; font-weith: bold; background-color: #ffffff">
-                                ชื่อผู่ใช้งาน {{ $item->name }}</th>
-                        </tr> --}}
-                </thead>
                 <tbody>
-                    <tr>
-                        @foreach ($item->durian_detail as $item)
-                            <td style="text-align: left;">{{ $item->name_our }}</td>
-                            <td style="text-align: left;">{{ $item->gap_his }}</td>
-                            <td style="text-align: left;">{{ $item->type_his }}</td>
-                            <td style="text-align: left;">{{ $item->created_at }}</td>
-                            <td style="text-align: left;">{{ $item->name_his }}</td>
-                            <td style="text-align: left;">{{ $item->phone_number_our }}</td>
-                            <td style="text-align: left;">
-                                <a href="{{ route('pdf', $item->docs_id) }}" class="btn btn-warning">แก้ไข</a>
-                            </td>
-                            <td style="text-align: left;">
-                                <a href="{{ route('delete', $item->id) }}" class="btn btn-danger">ลบ</a>
-                            </td>
-                            <td style="text-align: left;">
-                                <a href="{{ route('pdf', $item->id) }}" class="btn btn-info" target="_blank"><i
-                                        class="fa-solid fa-print" style="color: #ffffff;"></i></a>
+                    @foreach ($user as $item)
+                        @foreach ($item->durian_detail as $detail)
+                            <tr>
+                                <td>{{ $detail->name_our }}</td>
+                                <td>{{ $detail->gap_his }}</td>
+                                <td>{{ $detail->type_his }}</td>
+                                <td>{{ $detail->created_at }}</td>
+                                <td>{{ $detail->name_his }}</td>
+                                <td>{{ $detail->phone_number_our }}</td>
+                                <td>
+                                    <a href="{{ route('delete', $detail->id) }}" class="btn btn-danger btn-delete">ลบ</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('pdf', $detail->id) }}" class="btn btn-info" target="_blank"><i
+                                            class="fa-solid fa-print" style="color: #ffffff;"></i></a>
+                                </td>
 
-                            </td>
-                            <td>
-                                @if ($item->status == true)
-                                    <a href="{{ route('change', $item->id) }}" class="btn btn-success">เผยแพร่</a>
-                                @else
-                                    <a href="{{ route('change', $item->id) }}" class="btn btn-secondary">ฉบับร่าง</a>
-                                @endif
-                            </td>
-                    </tr>
+                                <td>
+                                    <div class="dropdown">
+                                        <button
+                                            class="btn btn-primary dropdown-toggle @if ($detail->status == 'รอตรวจสอบ') btn-warning @elseif($detail->status == 'ผ่าน') btn-success @elseif($detail->status == 'ไม่ผ่าน') btn-danger @endif"
+                                            type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            @if ($detail->status == 'รอตรวจสอบ')
+                                                รอตรวจสอบ
+                                            @elseif($detail->status == 'ผ่าน')
+                                                ผ่าน
+                                            @elseif($detail->status == 'ไม่ผ่าน')
+                                                ไม่ผ่าน
+                                            @endif
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item"
+                                                href="{{ route('change', ['id' => $detail->id, 'status' => 'รอตรวจสอบ']) }}">รอตรวจสอบ</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('change', ['id' => $detail->id, 'status' => 'ผ่าน']) }}">ผ่าน</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('change', ['id' => $detail->id, 'status' => 'ไม่ผ่าน']) }}">ไม่ผ่าน</a>
+                                        </div>
+                                    </div>
+                                </td>
+
+
+
+                            </tr>
+                        @endforeach
                     @endforeach
                 </tbody>
-                @endforeach
             </table>
         </div>
-    </div>
     </div>
 
     <script>
@@ -118,7 +123,7 @@
                     "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 รายการ",
                     "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกหมวดหมู่)",
                     "sInfoPostFix": "",
-                    "sSearch": "ค้นหาควย:",
+                    "sSearch": "ค้นหา:",
                     "sUrl": "",
                     "oPaginate": {
                         // "sFirst": "เริ่มต้น",
@@ -138,7 +143,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // เพิ่ม event listener สำหรับปุ่มลบ
-        $('.btn-danger').click(function(event) {
+        $('.btn-delete').click(function(event) {
             event.preventDefault(); // ยกเลิกการทำงานปกติของปุ่ม
 
             var deleteUrl = $(this).attr('href'); // รับ URL สำหรับการลบ

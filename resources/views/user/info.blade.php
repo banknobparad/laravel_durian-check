@@ -31,8 +31,6 @@
             margin-bottom: 30px;
             /* เพิ่มระยะห่างด้านล่าง */
         }
-
-
     </style>
 
 
@@ -53,7 +51,10 @@
                         <th>วันที่ส่ง</th>
                         <th>เจ้าของสวน</th>
                         <th>เบอร์โทรศัพท์</th>
-                        <th>แก้ไข</th>xป
+                        <th>แก้ไข</th>
+                        <th style="text-align: center;">สถานะ</th>
+                        <th>อายุใบ</th>
+
 
                     </tr>
                 </thead>
@@ -68,6 +69,25 @@
                             <td>{{ $item->phone_number_our }}</td>
                             <td>
                                 <a href="{{ route('edit', $item->id) }}" class="btn btn-warning">แก้ไข</a>
+                            </td>
+                            <td style="text-align: center;">
+                                @if ($item->status == 'รอตรวจสอบ')
+                                    <button class="btn btn-secondary">{{ $item->status }}</button>
+                                @elseif($item->status == 'ผ่าน')
+                                    <button class="btn btn-success">{{ $item->status }}</button>
+                                    @if (!empty($item->date))
+                                    @endif
+                                @elseif($item->status == 'ไม่ผ่าน')
+                                    <button class="btn btn-danger">{{ $item->status }}</button>
+                                @endif
+                            </td>
+                            <td>
+                                @php
+                                    $remainingDays = \Carbon\Carbon::parse($item->date)->diffInDays(
+                                        \Carbon\Carbon::now(),
+                                    );
+                                @endphp
+                                {{ $remainingDays }} วัน
                             </td>
 
                         </tr>

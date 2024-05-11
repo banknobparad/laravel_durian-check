@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('checkdatas', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->string('gap_id');
+            $table->string('user_id')->nullable();
+            $table->string('gap_id')->nullable();
             $table->timestamps();
         });
     }

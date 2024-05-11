@@ -43,7 +43,9 @@ return new class extends Migration
             $table->string('soi_his')->nullable();
             $table->string('road_his')->nullable();
 
-            $table->boolean('status')->default(false);
+            $table->enum('status', ['รอตรวจสอบ', 'ผ่าน', 'ไม่ผ่าน'])->default('รอตรวจสอบ');
+
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

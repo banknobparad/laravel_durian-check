@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Checkdata;
 use App\Models\User;
 use App\Models\Durian_detail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,8 +16,43 @@ class AdminController extends Controller
         $this->middleware('admin');
     }
 
-    public function check(){
-        return view('admin.check');
+    public function check()
+    {
+        $checkdatas = Checkdata::with('user')->get();
+
+        return view('admin.check', compact('checkdatas'));
+    }
+
+    public function checkuser($id)
+    {
+        // หาข้อมูลในฐานข้อมูล
+        $checkdata = Checkdata::findOrFail($id);
+
+        // ทำการอัปเดตค่าในฐานข้อมูล
+        $checkdata->update(['user_id' => null]);
+
+        // ส่งกลับไปยังหน้าที่ต้องการ
+        return redirect()->back()->with('success', 'ลบข้อมูลผู้ลงทะเบียนเรียบร้อยแล้ว');
+    }
+
+    public function checkgap($id)
+    {
+        // หาข้อมูลในฐานข้อมูล
+        $checkdata = Checkdata::findOrFail($id);
+
+        // ทำการอัปเดตค่าในฐานข้อมูล
+        $checkdata->update(['gap_id' => null]);
+
+        // ส่งกลับไปยังหน้าที่ต้องการ
+        return redirect()->back()->with('success', 'ลบข้อมูลผู้ลงทะเบียนเรียบร้อยแล้ว');
+    }
+
+    public function deletecheckdata()
+    {
+        // รหัสที่ใช้ในการลบข้อมูลจากตาราง checkdatas
+        Checkdata::truncate();
+
+        return response()->json(['message' => 'Data deleted successfully']);
     }
 
     public function infoAll()
@@ -37,10 +74,33 @@ class AdminController extends Controller
     public function change($id)
     {
         $durian = Durian_detail::find($id);
+
+        // กำหนดสถานะใหม่โดยใช้เงื่อนไขตรวจสอบ
+        $newStatus = '';
+        $newDate = $durian->date; // กำหนดให้เป็นวันเดียวกับเดิมก่อน
+        switch ($durian->status) {
+            case 'รอตรวจสอบ':
+                $newStatus = 'ผ่าน';
+                $newDate = Carbon::now()->addDays(10)->toDateString(); // เพิ่มวันที่อีก 10 วัน
+                break;
+            case 'ผ่าน':
+                $newStatus = 'ไม่ผ่าน';
+                break;
+            case 'ไม่ผ่าน':
+                $newStatus = 'รอตรวจสอบ';
+                break;
+            default:
+                // ค่าเริ่มต้นหรือการจัดการข้อผิดพลาด
+                break;
+        }
+
         $data = [
-            'status' => !$durian->status
+            'status' => $newStatus,
+            'date' => $newDate, // อัพเดทวันที่ใหม่
         ];
-        $durian = Durian_detail::find($id)->update($data);
+
+        $durian->update($data);
+
         return redirect()->back();
     }
 }

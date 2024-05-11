@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Checkdata extends Model
 {
-    protected $guarded =[];
+    protected $guarded = [];
 
     use HasFactory;
+
+    function user()
+    {
+        return $this->hasMany('App\Models\user', 'id', 'user_id');
+    }
 }

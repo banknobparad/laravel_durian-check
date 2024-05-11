@@ -48,6 +48,13 @@ Route::middleware([Admin::class])->group(function () {
     Route::get('/change/{id}', [App\Http\Controllers\AdminController::class, 'change'])->name('change');
 
     Route::get('check', [App\Http\Controllers\AdminController::class, 'check'])->name('check');
+
+    Route::post('/check-user/{id}', [App\Http\Controllers\AdminController::class, 'checkuser'])->name('checkuser');
+    Route::post('/check-gap/{id}', [App\Http\Controllers\AdminController::class, 'checkgap'])->name('checkgap');
+
+    Route::post('/delete-checkdata', [App\Http\Controllers\AdminController::class, 'deletecheckdata'])->name('deletecheckdata');
+
+
 });
 
 

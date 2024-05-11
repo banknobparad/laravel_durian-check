@@ -152,7 +152,7 @@ class DurianController extends Controller
 
     public function info()
     {
-        $detail = Durian_detail::where('user_id', Auth::id())->where('status', '1')->get();
+        $detail = Durian_detail::where('user_id', Auth::id())->get();
 
         // dd($detail);
         return view('user.info', compact('detail'));
