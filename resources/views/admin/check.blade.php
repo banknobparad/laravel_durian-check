@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-12 py-5">
                 <div style="color: #627e32" class="display-6 text-center">เวลาที่จะรีเซ็ตข้อมูล</div>
             </div>

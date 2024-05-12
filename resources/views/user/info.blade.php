@@ -72,11 +72,11 @@
                             <td>{{ $item->name_his }}</td>
                             <td>{{ $item->phone_number_our }}</td>
                             <td>
-                                <a href="{{ route('edit', $item->id) }}" class="btn btn-warning">แก้ไข</a>
+                                <a href="{{ route('edit', $item->id) }}" class="btn btn-secondary">แก้ไข</a>
                             </td>
                             <td style="text-align: center;">
                                 @if ($item->status == 'รอตรวจสอบ')
-                                    <button class="btn btn-secondary">{{ $item->status }}</button>
+                                    <button class="btn btn-warning">{{ $item->status }}</button>
                                 @elseif($item->status == 'ผ่าน')
                                     <button class="btn btn-success">{{ $item->status }}</button>
                                 @elseif($item->status == 'ไม่ผ่าน')
@@ -89,12 +89,12 @@
                                         \Carbon\Carbon::now(),
                                     );
                                 @endphp
-                            
+
                                 @if($remainingDays > 0)
                                     {{ $remainingDays }} วัน
                                 @endif
                             </td>
-                            
+
 
                         </tr>
                     @endforeach

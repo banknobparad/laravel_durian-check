@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@section('title', 'รายงาน')
+
+@section('activeReport')
+    active border-2 border-bottom border-warning
+@endsection
 
 @section('content')
     <style>
@@ -30,14 +35,22 @@
         .bg-info .small-box-footer {
             color: white !important;
         }
+
         .bg-success .inner h3,
         .bg-success .inner p,
         .bg-success .small-box-footer {
             color: white !important;
         }
+
         .bg-danger .inner h3,
         .bg-danger .inner p,
         .bg-danger .small-box-footer {
+            color: white !important;
+        }
+
+        .bg-warning .inner h3,
+        .bg-warning .inner p,
+        .bg-warning .small-box-footer {
             color: white !important;
         }
     </style>
@@ -45,126 +58,179 @@
         <div class="row">
             <div class="col-md-12 py-4">
                 <h2 class="text-center">รายงานข้อมูล</h2>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-warning" id="btn1">1 วัน</button>
-                    <button type="button" class="btn btn-warning" id="btn30">1 เดือน</button>
-                    <button type="button" class="btn btn-warning" id="btnAll">ทั้งหมด</button>
-                </div>
+
             </div>
-            <div class="col-md-4">
-                <div class="form-group mt-3">
-                    <label for="monthSelect">เลือกเดือน:</label>
-                    <select class="form-select" id="monthSelect">
-                        <option value="1">มกราคม</option>
-                        <option value="2">กุมภาพันธ์</option>
-                        <option value="3">มีนาคม</option>
-                        <option value="4">เมษายน</option>
-                        <option value="5">พฤษภาคม</option>
-                        <option value="6">มิถุนายน</option>
-                        <option value="7">กรกฎาคม</option>
-                        <option value="8">สิงหาคม</option>
-                        <option value="9">กันยายน</option>
-                        <option value="10">ตุลาคม</option>
-                        <option value="11">พฤศจิกายน</option>
-                        <option value="12">ธันวาคม</option>
-                    </select>
-                </div>
+            <div class="card col-md-3">
+                <form method="GET" action="{{ route('filterData') }}">
+                    <div class="form-group">
+                        <label>Start Date:</label>
+                        <input type="date" name="start_date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>End Date:</label>
+                        <input type="date" name="end_date" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 p-1 d-flex justify-content-between">
+                        <div class="card col-md-6">
+                            <button type="submit" class="btn btn-sm btn-primary">ค้นหา</button>
+                        </div>
+                        <div class="card col-md-6">
+                            <a href="{{ route('report') }}" class="btn btn-sm btn-secondary">เคลียร์</a>
+                        </div>
+                    </div>
+
+
+
             </div>
-            <div class="col-md-2">
+            </form>
+            <div class="col-md-3">
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
-                        <p>New Orders</p>
+                        <h3>ลงทะเบียนทั้งหมด</h3>
+                        <p id="register">{{ $durian_details->count() }} ครั้ง</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('infoAll') }}" class="small-box-footer">ดูเพิ่มเติม <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>150</h3>
-                        <p>New Orders</p>
+                        <h3>ผ่าน</h3>
+                        <p id="approved">{{ $durian_details->where('status', 'ผ่าน')->count() }} ครั้ง</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>150</h3>
-                        <p>New Orders</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-bag"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('infoAll') }}" class="small-box-footer">ดูเพิ่มเติม <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>150</h3>
-                        <p>New Orders</p>
+                        <h3>ไม่ผ่าน</h3>
+                        <p id="disapproved">{{ $durian_details->where('status', 'ไม่ผ่าน')->count() }} ครั้ง</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('infoAll') }}" class="small-box-footer">ดูเพิ่มเติม <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-2">
+                <div class="small-box bg-warning" style="background-color: #ba8c02">
+                    <div class="inner">
+                        <h3>รอตรวจสอบ</h3>
+                        <p id="pending">{{ $durian_details->where('status', 'รอตรวจสอบ')->count() }} ครั้ง</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="{{ route('infoAll') }}" class="small-box-footer">ดูเพิ่มเติม <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
 
-                <canvas id="myChart" width="300" height="90"></canvas>
+            <div class="card col-md-6 py-2 mt-3 my-4">
 
+                <canvas id="myChart" width="300" height="230"></canvas>
+
+            </div>
+            <div class="card col-md-6 py-2 mt-3 my-4">
+
+                <table id="report" class="table table-bordered table-hover table-striped display">
+                    <thead class="table-th-color">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ชื่อผู้ตรวจ</th>
+                            <th scope="col">GAP</th>
+                            <th scope="col">วันที่ตรวจ</th>
+                            <th style="text-align: center;" scope="col">สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($durian_details as $detail)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $detail->name_our }}</td>
+                                <td>{{ $detail->gap_his }}</td>
+                                <td>{{ $detail->created_at }}</td>
+                                <td style="text-align: center;">
+                                    @if ($detail->status == 'รอตรวจสอบ')
+                                        <button class="btn btn-warning">{{ $detail->status }}</button>
+                                    @elseif($detail->status == 'ผ่าน')
+                                        <button class="btn btn-success">{{ $detail->status }}</button>
+                                    @elseif($detail->status == 'ไม่ผ่าน')
+                                        <button class="btn btn-danger">{{ $detail->status }}</button>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
+    <script>
+        new DataTable('#report', {
+            responsive: true,
+            ordering: false,
+            autoWidth: false,
+            language: {
+                emptyTable: "ไม่พบข้อมูลที่ค้นหา",
+                zeroRecords: "ไม่พบข้อมูลตามเงื่อนไขที่ระบุ",
+                loadingRecords: "กำลังโหลดข้อมูล...",
+                search: "ค้นหา:",
+
+                aria: {
+                    sortAscending: ": เรียงลำดับจากน้อยไปมาก",
+                    sortDescending: ": เรียงลำดับจากมากไปน้อย"
+                }
+            }
+        });
+    </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // โค้ดสำหรับการสร้างกราฟดูข้อมูล
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['ผ่าน', 'ไม่ผ่าน', 'รอการตรวจสอบ'],
                 datasets: [{
-                    label: 'My Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    label: 'ข้อมูลการตรวจสอบ',
+                    data: [
+                        {{ $durian_details->where('status', 'ผ่าน')->count() }},
+                        {{ $durian_details->where('status', 'ไม่ผ่าน')->count() }},
+                        {{ $durian_details->where('status', 'รอตรวจสอบ')->count() }},
+                    ],
+                    backgroundColor: ['rgba(25, 135, 84, 0.5)', 'rgba(220, 53, 69, 0.5)',
+                        'rgba(255, 193, 3, 0.5)'
+                    ],
+                    borderColor: ['rgba(25, 135, 84, 1)', 'rgba(220, 53, 69, 1)',
+                        'rgba(255, 193, 3, 1)'
+                    ],
                     borderWidth: 1
                 }]
             },
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
                     }
                 }
             }
-        });
-
-        // การจัดการเหตุการณ์เมื่อคลิกปุ่ม
-        document.getElementById('btn1').addEventListener('click', function() {
-            // โค้ดสำหรับแสดงข้อมูลเฉพาะ 1 วัน
-            console.log('ดูข้อมูลเฉพาะ 1 วัน');
-        });
-
-        document.getElementById('btn30').addEventListener('click', function() {
-            // โค้ดสำหรับแสดงข้อมูลเฉพาะ 1 เดือน
-            console.log('ดูข้อมูลเฉพาะ 1 เดือน');
-        });
-
-        document.getElementById('btnAll').addEventListener('click', function() {
-            // โค้ดสำหรับแสดงข้อมูลทั้งหมด
-            console.log('ดูข้อมูลทั้งหมด');
         });
     </script>
 @endsection

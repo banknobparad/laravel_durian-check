@@ -109,8 +109,23 @@ class AdminController extends Controller
     }
 
 
-    public function report()
+    public function report(Request $request)
     {
-        return view('admin.report');
+
+        $durian_details = Durian_detail::get();
+
+        return view('admin.report', compact('durian_details'));
+    }
+
+
+    public function filterData(Request $request)
+    {
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        // ดึงข้อมูลจากตาราง durian_details โดยกำหนดเงื่อนไขเป็นช่วงของวันที่
+        $durian_details = Durian_detail::whereBetween('created_at', [$start_date, $end_date])->get();
+
+        return view('admin.report', compact('durian_details'));
     }
 }

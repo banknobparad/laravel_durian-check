@@ -57,6 +57,7 @@ Route::middleware([Admin::class])->group(function () {
 
     Route::get('report', [App\Http\Controllers\AdminController::class, 'report'])->name('report');
 
+    Route::get('/filter-data', [App\Http\Controllers\AdminController::class, 'filterData'])->name('filterData');
 });
 
 

@@ -56,7 +56,7 @@
                         <th style="text-align: left;">เบอร์โทรศัพท์</th>
                         <th style="text-align: left;">ลบ</th>
                         <th style="text-align: left;">ปริ้น</th>
-                        <th style="text-align: left;">สถานะ</th>
+                        <th style="text-align: center;">สถานะ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,10 +77,10 @@
                                             class="fa-solid fa-print" style="color: #ffffff;"></i></a>
                                 </td>
 
-                                <td>
+                                <td style="text-align: center;">
                                     <div class="dropdown">
                                         <button
-                                            class="btn btn-primary dropdown-toggle @if ($detail->status == 'รอตรวจสอบ') btn-secondary @elseif($detail->status == 'ผ่าน') btn-success @elseif($detail->status == 'ไม่ผ่าน') btn-danger @endif"
+                                            class="btn btn-primary dropdown-toggle @if ($detail->status == 'รอตรวจสอบ') btn-warning @elseif($detail->status == 'ผ่าน') btn-success @elseif($detail->status == 'ไม่ผ่าน') btn-danger @endif"
                                             type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
                                             @if ($detail->status == 'รอตรวจสอบ')
